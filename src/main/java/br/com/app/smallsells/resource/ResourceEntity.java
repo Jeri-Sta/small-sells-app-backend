@@ -12,6 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "resource")
 public class ResourceEntity {
 
     @Id

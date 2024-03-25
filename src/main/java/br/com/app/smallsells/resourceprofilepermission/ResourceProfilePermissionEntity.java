@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Table(name = "resource_profile_permission")
 public class ResourceProfilePermissionEntity {
 
     @Id

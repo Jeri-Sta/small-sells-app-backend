@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Table(name = "profile")
 public class ProfileEntity {
 
     @Id

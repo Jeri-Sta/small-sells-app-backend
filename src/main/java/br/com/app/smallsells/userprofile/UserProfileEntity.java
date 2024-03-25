@@ -12,6 +12,7 @@ import org.springframework.beans.BeanUtils;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "user_profile")
 public class UserProfileEntity {
 
     @Id

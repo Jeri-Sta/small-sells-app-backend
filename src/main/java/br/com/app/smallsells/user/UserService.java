@@ -6,7 +6,10 @@ import br.com.app.smallsells.user.model.User;
 import br.com.app.smallsells.user.model.UserDto;
 import br.com.app.smallsells.utils.GeneralMessages;
 import jakarta.validation.ConstraintViolationException;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,13 +20,13 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Setter(onMethod_ = @Autowired)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserService {
 
-    @Autowired
     UserRepository userRepository;
-    @Autowired
-    private ModelMapper modelMapper;
-    private UserValidator userValidator;
+    ModelMapper modelMapper;
+    UserValidator userValidator;
 
     public Page<UserDto> listAll(Pageable pageable) {
         return userRepository.findAll(pageable)
@@ -33,7 +36,7 @@ public class UserService {
     public UserDto listById(Long id) {
         Optional<User> optional = userRepository.findById(id);
 
-        return modelMapper.map(optional.get(), UserDto.class);
+        return modelMapper.map(optional.orElse(new User()), UserDto.class);
     }
 
     public UserDto createUser(UserDto dto) throws GeneralException {

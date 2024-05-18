@@ -4,6 +4,9 @@ import br.com.app.smallsells.exception.bundle.GeneralException;
 import br.com.app.smallsells.user.model.UserDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,9 +20,10 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/user")
+@Setter(onMethod_ = @Autowired)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserController {
 
-    @Autowired
     UserService userService;
 
     @GetMapping

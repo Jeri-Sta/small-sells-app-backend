@@ -1,8 +1,6 @@
 package br.com.app.smallsells.config;
 
-import br.com.app.smallsells.security.model.RegisterRequestValidator;
 import br.com.app.smallsells.user.UserRepository;
-import br.com.app.smallsells.user.UserValidator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
